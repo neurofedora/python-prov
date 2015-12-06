@@ -1,0 +1,33 @@
+From 557a4d33eecdfda2a81029bd18e4b614c0eab03e Mon Sep 17 00:00:00 2001
+From: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+Date: Sun, 6 Dec 2015 23:06:31 +0100
+Subject: [PATCH] test_xml: decode() buffers to work with py3 also
+
+Signed-off-by: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+---
+ prov/tests/test_xml.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/prov/tests/test_xml.py b/prov/tests/test_xml.py
+index 79fb7eb..533b967 100644
+--- a/prov/tests/test_xml.py
++++ b/prov/tests/test_xml.py
+@@ -64,13 +64,13 @@ def compare_xml(doc1, doc2):
+     buf = io.BytesIO()
+     obj1.write_c14n(buf)
+     buf.seek(0, 0)
+-    str1 = buf.read()
++    str1 = buf.read().decode()
+     str1 = [_i.strip() for _i in str1.splitlines() if _i.strip()]
+ 
+     buf = io.BytesIO()
+     obj2.write_c14n(buf)
+     buf.seek(0, 0)
+-    str2 = buf.read()
++    str2 = buf.read().decode()
+     str2 = [_i.strip() for _i in str2.splitlines() if _i.strip()]
+ 
+     unified_diff = difflib.unified_diff(str1, str2)
+-- 
+2.6.3
+

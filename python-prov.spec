@@ -8,6 +8,8 @@ Summary:        W3C Provenance Data Model supporting PROV-JSON and PROV-XML impo
 License:        MIT
 URL:            https://pypi.python.org/pypi/prov
 Source0:        https://github.com/trungdong/prov/archive/%{version}/%{modname}-%{version}.tar.gz
+# https://github.com/trungdong/prov/pull/73
+Patch0:         0001-test_xml-decode-buffers-to-work-with-py3-also.patch
 
 BuildArch:      noarch
 
@@ -54,7 +56,7 @@ import/export.
 Python 3 version.
 
 %prep
-%autosetup -n %{modname}-%{version}
+%autosetup -n %{modname}-%{version} -p1
 
 %build
 %py2_build
