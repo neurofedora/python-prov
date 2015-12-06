@@ -68,7 +68,7 @@ sed -i -e '1s|^#!.*$|#!%{__python3}|' %{buildroot}%{_bindir}/*
 
 %check
 %{__python2} setup.py test
-%{__python2} setup.py test
+%{__python3} setup.py test
 
 %files -n python2-%{modname}
 %license LICENSE
